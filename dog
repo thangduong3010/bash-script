@@ -4,3 +4,11 @@
 
 
 echo Hello $1! How are you doing today?
+
+echo $2 >> ~/note.txt
+
+echo $(date): $2 >> ~/note.txt
+
+echo $1 just saved: $2 >> ~/note.txt
+
+echo $1 just saved: $2 into ~/note.txt file
