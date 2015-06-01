@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This is the 2nd script
+# Author: Thang Duong
+
+
+# get the date
+date=$(date)
+
+# get argument
+arg1="$1"
+arg2="$2"
+
+# file to write to
+filename=${HOME}/Desktop/${arg1}_${arg2}.txt
+
+# get input
+read -p "What do you do? " note
+
+echo $date: ${note} >> "${filename}"
+echo $date: So your job is ${note}, Cool!
+echo "$date: Your job is saved to '"${filename}"'"
