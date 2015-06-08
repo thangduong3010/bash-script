@@ -1,0 +1,53 @@
+!#/bin/bash
+
+# Author: Thang Duong
+# Learning If/else statement
+
+# Is there an argument?
+if [[ ! $1 ]]; then
+    echo "Missing argument!!!"
+    exit 1
+fi
+
+scriptname="$1"
+bindir="${HOME}/Desktop/bin"
+filename="${bindir}/${filename}"
+
+# Check the file existence
+if [[ -e $filename ]]; then
+    echo "File ${filename} already exists"
+    exit 1
+fi
+
+# Check name of command
+if type "$scriptname"; then
+    echo "There is already a command named ${scriptname}"
+    exit 1
+fi
+
+# Check bin directory existence
+if [[ ! -d $bindir ]]; then
+    # if not, create one
+    if mkdir "$bindir"; then
+        echo "Directory ${bindir} created"
+    else
+        echo "Could not create new directory"
+        exit 1
+    fi
+fi
+
+# Create script with a single line
+echo '#!/bin/bash' > "$filename"
+
+# Grant permission
+chmod u+x "$filename"
+
+# Open with an editor
+if [[ $EDITOR ]]; then
+    $EDITOR "$filename"
+else
+    echo "\$EDITOR is not set"
+    exit 1
+fi
+
+exit 0
