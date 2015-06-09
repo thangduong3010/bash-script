@@ -11,7 +11,7 @@ fi
 
 scriptname="$1"
 bindir="${HOME}/Desktop/bin"
-filename="${bindir}/${filename}"
+filename="${bindir}/${scriptname}"
 
 # Check the file existence
 if [[ -e $filename ]]; then
