@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Author: Thang Duong
+# If statement training section
+
+# Ask for name
+if [[ $# -ne 1 ]]; then
+    echo "You must enter your name!!"
+    exit 1
+fi
+
+name="$1"
+read -p "Type your favorite pet, ${name}: " pet
+
+if [[ $pet = "dog" ]]; then
+    echo "I love dog, too!"
+    read -p "Do you know how does it yell? " reply
+    
+    if [[ $reply = "yes" ]]; then
+        echo "Okay, you really love it! Bye!"
+    elif [[ $reply = "no" ]]; then
+        echo "Woof Woof!!"
+    else
+        echo "Invalid answer!!!"
+        exit 1
+    fi
+
+elif [[ $pet = "cat" ]]; then
+    echo "I fucking hate cat!!!"
+    read -p "Do you know how does it yell?" reply
+
+    if [[ $reply = "yes" ]]; then
+        echo "Good! I know you hate cats, too!! Bye!"
+    elif [[ $reply = "no" ]]; then
+        echo "Meow Meow!!"
+    else
+        echo "Invalid answer!!!"
+        exit 1
+    fi
+
+else
+    echo "Hmm, that your pet is weird!!!"
+    exit 1
+fi
+ 
+echo "Good bye! $1"
+exit 0
+
+
