@@ -16,9 +16,9 @@ if [[ $pet = "dog" ]]; then
     echo "I love dog, too!"
     read -p "Do you know how does it yell? " reply
     
-    if [[ $reply = "yes" ]]; then
+    if [[ $reply = "yes" || $reply = "y" ]]; then
         echo "Okay, you really love it! Bye!"
-    elif [[ $reply = "no" ]]; then
+    elif [[ $reply = "no" || $reply = "n" ]]; then
         echo "Woof Woof!!"
     else
         echo "Invalid answer!!!"
@@ -29,9 +29,9 @@ elif [[ $pet = "cat" ]]; then
     echo "I fucking hate cat!!!"
     read -p "Do you know how does it yell?" reply
 
-    if [[ $reply = "yes" ]]; then
+    if [[ $reply = "yes" || $reply = "y" ]]; then
         echo "Good! I know you hate cats, too!! Bye!"
-    elif [[ $reply = "no" ]]; then
+    elif [[ $reply = "no" || $reply = "n" ]]; then
         echo "Meow Meow!!"
     else
         echo "Invalid answer!!!"

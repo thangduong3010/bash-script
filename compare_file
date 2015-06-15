@@ -30,9 +30,9 @@ count_2=$(ls -A1 "$dir2" | wc -l)
 
 # Comparing
 if [[ $count_1 -gt $count_2 ]]; then
-    echo "$dir1 has more files than $dir2"
-elif [[ $count_2 -gt $count_1 ]]; then
-    echo "$dir2 has more files than $dir1"
+    echo "${dir1} has more files than ${dir2}"
+elif [[ $count_1 -lt $count_2 ]]; then
+    echo "${dir2} has more files than ${dir1}"
 else
     echo "Equal!!!"
 fi
