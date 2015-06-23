@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Author: Thang Duong
+# Practicing redirection
+
+# get the date
+date=$(date)
+
+# get the topic
+topic="$1"
+
+# save to filename
+filename="${HOME}/Desktop/${topic}_note.txt"
+
+read -p "Your note: " note
+
+if [[ $note ]]; then
+    echo "$date : $note" >> "$filename" 
+    echo "Note '$note' saved to $filename"
+else
+    echo "Note not found"  > /dev/stderr
+fi
