@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Author: Thang Duong
+# Practicing "Live While We're Young" - One Direction
+
+# get a random number < 100
+target=$(($RANDOM % 100))
+
+# initialize guess
+guess=
+
+while [[ $guess -ne $target ]]; do
+    read -p "Take a guess: " guess
+    if [[ $guess -lt $target ]]; then
+        echo "Higher!!!"
+    elif [[ $guess -gt $target ]]; then
+        echo "Lower!!!"
+    else
+        echo "You found it!!!"
+    fi
+done
+
+exit 0
