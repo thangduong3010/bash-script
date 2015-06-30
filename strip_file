@@ -1,0 +1,23 @@
+#!/bin/bash
+# Author: Thang Duong
+# Practicing BREAK
+
+if [[ ! $1 ]]; then
+    echo "Need first argument!!" >&2
+    exit 0
+fi
+
+# read upto first match
+while read -r; do
+    if [[ $REPLY =~ $1 ]]; then		# if $REPLY contain $1
+        echo "$REPLY"			# print out $REPLY
+        break
+    fi
+done
+
+# print the rest of the file
+while read -r; do
+    echo "$REPLY"
+done
+
+exit 0
