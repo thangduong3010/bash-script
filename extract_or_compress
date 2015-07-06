@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Author: Thang Duong
+# More practice with CASE
+
+# Require file name
+if [[ $# -ne 1 ]]; then
+    echo "Need exactly 1 arguments!" >&2
+    exit 1
+fi
+
+gzip="gz"
+bzip2="bz2"
+
+case $1 in
+    *${gzip})
+        echo "File needs to be unzipped using gunzip"
+        gunzip $1;;
+    *${bzip2})
+        echo "File needs to be unzipped using bunzip2"
+        bunzip2 $1;;
+    *)
+        read -p "File needs to be compressed with gzip or bzip2 [gzip]: " order
+            if [[ ! ${order} ]]; then
+                echo "You've chosen gzip"
+                gzip $1
+            elif [[ ${order} = "gzip" ]]; then
+                echo "You've chosen gzip"
+                gzip $1
+            elif [[ ${order} = "bzip2" ]]; then
+                echo "You've chosen bzip2"
+                bzip2 $1
+            else
+                echo "Invalid option!" >&2
+                exit 1
+            fi;;
+                                
+esac
