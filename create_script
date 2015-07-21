@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # Author: Thang Duong
 # Learning If/else statement

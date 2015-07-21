@@ -1,0 +1,8 @@
+#!/bin/bash
+# Author: Thang Duong
+
+declare -x var="outer"
+echo "outer before: $var"
+bash ./inner
+echo "outer after: $var"
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+# Author: Thang Duong
+
+
+echo "inner before: $var"
+export var="inner"
+echo "inner after: $var"
