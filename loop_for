@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+for var in Canada USA Mexico
+do
+	printf "%s\n" $var
+done
+
+
+echo "C-style"
+
+for (( n=1; n<=10; n++ ))
+do
+	echo $n
+done
+
+echo "Break usage:"
+
+for (( n=0; n<5; n++ ))
+do
+	while true
+	do
+		if [[ $RANDOM -gt 20000 ]]
+		then
+			echo "Outta both"
+			break 2
+		elif [[ $RANDOM -lt 10000 ]]
+		then
+			echo "Outta while only"
+			break
+		else
+			echo "Still stuck"
+		fi
+	done
+done
+

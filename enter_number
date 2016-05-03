@@ -1,0 +1,12 @@
+#!/bin/bash
+
+printf "Enter a number between 20 and 30: "
+read a
+
+while [[ $a -lt 20 || $a -gt 30 ]]
+do
+	printf "Please enter an invalid number: "
+	read a
+done
+
+echo "Thank you"

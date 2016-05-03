@@ -1,0 +1,21 @@
+#!/bin/bash
+
+n=1
+
+while [[ $n -le 10 ]]
+do
+	echo $n
+	n=$(( $n + 1 ))
+done
+
+echo "Break usage:"
+
+while :
+do
+	read x
+	if [[ -z $x ]]
+	then
+		echo "You've not entered anything"
+		break
+	fi
+done

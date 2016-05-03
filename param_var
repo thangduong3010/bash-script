@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+# Positional param usage
+printf "Hello, %s!\n" "$1"
+
+# Special params
+# $* $@: value of all positional params
+# $#: number of positional params
+# $0: path to currently running script
+# $$: contain PID of current process
+# $?: exit code of last-executed command
+# $_: set to the last argument
+# $!: contain PID of last command executed in the background
+# $-: set to option flags currently in effect
+
+printf "You're in "$0"\n"
+
+# variable
+name='Thang'
+printf "Hi, %s\n" $name

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case $* in
+	3) printf 'Thanks, mate\n';;
+	*) printf 'I said three\n';;
+esac

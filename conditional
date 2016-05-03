@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+if [[ -z $1 ]]
+then
+	echo "No name entered" >&2
+	exit 1
+else
+	printf "Hi, %s\n" $1
+fi

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+printf "Enter a file: "
+read a
+
+while [[ !(-e $a) ]]
+do
+	printf "File doesn't exist. Enter it again: "
+	read a
+done
+
+echo "Thank you"
