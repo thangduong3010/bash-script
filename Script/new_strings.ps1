@@ -1,11 +1,27 @@
 # file name: new_strings.ps1
-# usage: search for new string that have been created
+# usage: search for new string that has been written into file
 # Arguments example: folder_name\*.log,AMQ9202
 
 $folder = $args.get(0)
 $files = dir $folder
+$file_change = @()
+$changes = 0
 
 foreach ($file in $files) {
+$diff = ((get-date) - $file.LastWriteTime).totalminutes
+if ($diff -lt 5) {
+	$file_change += $file
+	$changes++
+}
+}
+
+if ($changes -eq 0){
+	write-host "Message: No error has been encountered within the last 5 minutes"
+	write-host "Statistic: 0"
+	exit(0)
+} 
+
+foreach ($file in $file_change){
 $logfile_path = $file
 $regex = $args.get(1);
 $Error.Clear();
@@ -25,7 +41,6 @@ if ( !$(Test-Path $logfile_path) )
   exit 1
   }
 $filename = split-path $logfile_path -leaf
-$filenameroot = split-path $logfile_path
 
 write-host "Message: Scanning $logfile_path"
 $t = (Get-Childitem env:temp).value
@@ -64,12 +79,7 @@ $stat = $matching_rows | select linenumber, line | ForEach-Object {
   $resl[$i] = $_.line
   $i = $i + 1
   }
-if ($new_rows -eq 0)
- {
- write-host "Statistic: $new_rows"
- write-host "Message: No new error has been encountered"
- #exit 0
- }
+
 if ($new_rows -gt 0)
  {
  $lines = @()
@@ -95,3 +105,4 @@ if ($new_rows -gt 0)
   }
  }
  }
+ 
