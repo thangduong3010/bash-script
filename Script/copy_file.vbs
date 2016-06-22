@@ -1,24 +1,28 @@
-Const DestinationFile = "Z:\Test\test.txt"
-Const SourceFile = "H:\Test\test.txt"
+Const SourceFolder = "H:\Data\*"
+Dim DestinationFolder, dt, dd, mm, yy, hh, mi, ss
 
+DestinationFolder = "Z:\Data KT\Copy_"
+dt=now
+dd=day(dt)
+mm=month(dt)
+yy=year(dt)
+hh=hour(dt)
+mi=minute(dt)
+ss=second(dt)
+DestinationFolder = DestinationFolder & dd & "_" & mm & "_" & yy & "_" & hh & "h_" & mi & "m_" & ss & "s"
+
+' Create new destination folder
 Set fso = CreateObject("Scripting.FileSystemObject")
-    'Check to see if the file already exists in the destination folder
-    If fso.FileExists(DestinationFile) Then
-        'Check to see if the file is read-only
-        If Not fso.GetFile(DestinationFile).Attributes And 1 Then 
-            'The file exists and is not read-only.  Safe to replace the file.
-            fso.CopyFile SourceFile, "Z:\Test\", True
-        Else 
-            'The file exists and is read-only.
-            'Remove the read-only attribute
-            fso.GetFile(DestinationFile).Attributes = fso.GetFile(DestinationFile).Attributes - 1
-            'Replace the file
-            fso.CopyFile SourceFile, "Z:\Test\", True
-            'Reapply the read-only attribute
-            fso.GetFile(DestinationFile).Attributes = fso.GetFile(DestinationFile).Attributes + 1
-        End If
-    Else
-        'The file does not exist in the destination folder.  Safe to copy file to this folder.
-        fso.CopyFile SourceFile, "Z:\Test\", True
-    End If
+	If (fso.FolderExists(DestinationFolder)) Then
+		wscript.quit(0)		
+	Else
+		FSO.CreateFolder(DestinationFolder)
+	End If
 Set fso = Nothing
+
+' Copy to destination folder
+Set fso = CreateObject("Scripting.FileSystemObject")
+	FSO.CopyFolder SourceFolder, DestinationFolder  
+Set fso = Nothing
+
+'wscript.echo(dd & "_" & mm & "_" & yy & "_" & hh & "h_" & mi & "m_" & ss & "s")
