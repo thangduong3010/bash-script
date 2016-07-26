@@ -1,0 +1,34 @@
+# Install IQ 16 on OEL 6
+# Install required packages
+
+yum install libXext-devel.i686
+yum install libXtst-devel.i686
+yum install ncurses
+yum install compat-libstdc++-296
+
+# create user
+
+useradd -s /bin/bash sybaseiq
+passwd sybaseiq
+
+# create installation folder
+
+mkdir -p /u01/iq16
+chown -R sybaseiq:sybaseiq /u01/iq16
+chmod -R 755 /u01/iq16
+
+# Setting kernel parameter
+
+vi /etc/sysctl.conf
+kernel.sem = 250 32000 32 4096
+
+# Setting security
+
+vi /etc/security/limits.d/90-nproc.conf
+*	soft	nproc	unlimited
+
+vi /etc/security/limits.conf
+@sybaseiq	soft	nproc	unlimited
+
+# install
+./setup.bin

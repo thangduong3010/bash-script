@@ -1,0 +1,5 @@
+# sybase iq databae connection
+# username	password	connection
+edw_stg		sql123		10.6.138.11:2645/SIT_SRV:SITIQDB
+edw_stg		sql123		10.6.138.11:2643/DEV_SRV:DEVIQDB
+dba			pro1234		10.6.138.11:*	/*		:	*	
